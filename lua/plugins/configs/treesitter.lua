@@ -1,9 +1,9 @@
 return {
-  ensure_installed = { "lua" },
-  highlight = {
-    enable = true
-  },
-  indent = {
-    enable = true
-  }
+	ensure_installed = { "lua", "java" },
+	highlight = {
+		enable = true,
+	},
+	indent = {
+		enable = true,
+	},
 }

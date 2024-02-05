@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+M.options = {
 	filters = {
 		dotfiles = false,
 		exclude = { vim.fn.stdpath("config") .. "/lua/custom" },
@@ -26,7 +28,7 @@ return {
 	},
 	actions = {
 		open_file = {
-			resize_window = true,
+			quit_on_open = true,
 		},
 	},
 	renderer = {
@@ -72,3 +74,20 @@ return {
 		},
 	},
 }
+
+M.init = function()
+	vim.api.nvim_create_autocmd({ "VimEnter", "BufReadPost" }, {
+		callback = function(data)
+			-- buffer is a directory
+			local directory = vim.fn.isdirectory(data.file) == 1
+
+			if not directory then
+				return
+			end
+
+			require("nvim-tree.api").tree.toggle({ focus = true, find_file = false })
+		end,
+	})
+end
+
+return M

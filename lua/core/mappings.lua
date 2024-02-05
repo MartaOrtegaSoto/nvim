@@ -7,7 +7,22 @@ M.base = {
 	},
 }
 
-M.gitsigns = {}
+M.gitsigns = {
+	n = {
+		["<leader>gb"] = {
+			function()
+				package.loaded.gitsigns.blame_line()
+			end,
+			"Blame line",
+		},
+		["<leader>gd"] = {
+			function()
+				package.loaded.gitsigns.diffthis("~")
+			end,
+			"Blame line",
+		},
+	},
+}
 
 M.nvimtree = {
 	n = {

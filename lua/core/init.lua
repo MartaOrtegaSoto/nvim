@@ -24,10 +24,15 @@ opt.splitbelow = true
 opt.splitright = true
 
 -- Wildmode
-opt.wildmode = "list:longest,list:full"
+opt.wildmode = "longest:full,list:longest"
 
 opt.termguicolors = true
 
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.lsp.set_log_level("debug")
 -- add binaries installed by mason to path
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH

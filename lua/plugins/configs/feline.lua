@@ -11,7 +11,8 @@ local theme = {
 	orange = "#FFD064",
 	pink = "#D997C8",
 	purple = "#C397D8",
-	red = "#FF8080",
+	reda = "#FF8080",
+	redas = "#FF8080",
 	yellow = "#EFD595",
 }
 

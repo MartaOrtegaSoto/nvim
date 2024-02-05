@@ -62,6 +62,34 @@ local base_plugins = {
 			require("plugins.configs.lsp").lsp_config()
 		end,
 	},
+	-- Java LSP
+	{
+		"mfussenegger/nvim-jdtls",
+		ft = { "java" },
+		--	opts = function()
+		--		return require("plugins.configs.lsp").jdtls_opts
+		--	end,
+		--	config = function(_, opts)
+		--		local config = opts or {}
+
+		--		config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+		--		local function attach_jdtls()
+		--			-- Existing server will be reused if the root_dir matches.
+		--			require("jdtls").start_or_attach(config)
+		--			-- not need to require("jdtls.setup").add_commands(), start automatically adds commands
+		--		end
+		--		-- Attach the jdtls for each java buffer. HOWEVER, this plugin loads
+		--		-- depending on filetype, so this autocmd doesn't run for the first file.
+		--		-- For that, we call directly below.
+		--		vim.api.nvim_create_autocmd("FileType", {
+		--			pattern = { "java" },
+		--			callback = attach_jdtls,
+		--		})
+		--		-- Avoid race condition by calling attach the first time, since the autocmd won't fire.
+		--		-- attach_jdtls()
+		--	end,
+	},
 	-- Cmp
 	{
 		"hrsh7th/nvim-cmp",
@@ -100,9 +128,10 @@ local base_plugins = {
 		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 		init = function()
 			require("core.utils").load_mapping("nvimtree", {})
+			require("plugins.configs.nvimtree").init()
 		end,
 		opts = function()
-			return require("plugins.configs.nvimtree")
+			return require("plugins.configs.nvimtree").options
 		end,
 		config = function(_, opts)
 			require("nvim-tree").setup(opts)
