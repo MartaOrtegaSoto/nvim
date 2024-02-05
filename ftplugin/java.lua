@@ -3,6 +3,10 @@ if not status then
 	return
 end
 
+local on_attach = function(client, bufnr)
+	require("core.utils").load_mapping("lspconfig", { buffer = bufnr })
+end
+
 local home = os.getenv("HOME")
 local workspace_path = home .. "/.cache/jdtls/workspace/"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -48,6 +52,7 @@ local config = {
 	init_options = {
 		bundles = {},
 	},
+	on_attach = on_attach,
 }
 
 require("jdtls").start_or_attach(config)
