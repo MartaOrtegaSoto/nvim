@@ -2,13 +2,18 @@ local M = {}
 
 local servers = {
 	"lua_ls",
+	"jdtls",
+	"tsserver",
+	"pyright",
+	"bashls",
+	"cssls",
+	"lemminx",
+	"yamlls",
+	"marksman",
 }
 
 M.mason_opts = {
-	ensured_installed = {
-		"lua_ls",
-		"jdtls",
-	},
+	ensured_installed = servers,
 }
 
 M.lsp_config = function()
@@ -23,10 +28,12 @@ M.lsp_config = function()
 
 	-- General language setup
 	for _, server in ipairs(servers) do
-		lspconfig[server].setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
+		if server ~= "jdtls" then
+			lspconfig[server].setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		end
 	end
 
 	lspconfig.lua_ls.setup({
