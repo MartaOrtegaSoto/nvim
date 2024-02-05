@@ -94,6 +94,20 @@ local base_plugins = {
 			require("core.utils").load_mapping("conform", {})
 		end,
 	},
+	-- File explorer
+	{
+		"nvim-tree/nvim-tree.lua",
+		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+		init = function()
+			require("core.utils").load_mapping("nvimtree", {})
+		end,
+		opts = function()
+			return require("plugins.configs.nvimtree")
+		end,
+		config = function(_, opts)
+			require("nvim-tree").setup(opts)
+		end,
+	},
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",

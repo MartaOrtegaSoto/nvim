@@ -9,6 +9,16 @@ M.base = {
 
 M.gitsigns = {}
 
+M.nvimtree = {
+	n = {
+		-- toggle
+		["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+		-- focus
+		["<leader>b"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+	},
+}
+
 M.conform = {
 	n = {
 		["<leader>F"] = {
