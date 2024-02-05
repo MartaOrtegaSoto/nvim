@@ -139,28 +139,28 @@ components.lsp_errors = {
 	hl = {
 		fg = theme.red,
 	},
-	icon = "",
+	icon = "  ",
 }
 components.lsp_warns = {
 	provider = "diagnostic_warnings",
 	hl = {
 		fg = theme.yellow,
 	},
-	icon = "  ",
+	icon = "  ",
 }
 components.lsp_hints = {
 	provider = "diagnostic_hints",
 	hl = {
-		fg = theme.gray,
+		fg = theme.lime,
 	},
-	icon = "󰛩 ",
+	icon = "  ",
 }
 components.lsp_infos = {
 	provider = "diagnostic_hints",
 	hl = {
 		fg = theme.aqua,
 	},
-	icon = "󰋼 ",
+	icon = "  ",
 }
 components.lsp_stat = {
 	provider = "lsp_client_names",
@@ -171,8 +171,7 @@ components.cwd = {
 		return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 	end,
 	left_sep = "block",
-	-- icon = { str = " 󰉋 ", hl = { fg = "bg", bg = theme.pink } },
-	icon = { str = " 󰉋 ", hl = { fg = theme.pink } },
+	icon = { str = "  ", hl = { fg = theme.pink } },
 }
 components.progress = {
 	provider = "line_percentage",

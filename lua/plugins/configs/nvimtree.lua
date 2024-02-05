@@ -5,7 +5,7 @@ return {
 	},
 	disable_netrw = true,
 	hijack_netrw = true,
-	hijack_cursor = true,
+	hijack_cursor = false,
 	hijack_unnamed_buffer_when_opening = false,
 	sync_root_with_cwd = true,
 	update_focused_file = {
@@ -13,10 +13,9 @@ return {
 		update_root = false,
 	},
 	view = {
-		adaptive_size = false,
 		side = "left",
-		width = 30,
-		preserve_window_proportions = true,
+		width = 40,
+		preserve_window_proportions = false,
 	},
 	git = {
 		enable = false,
@@ -31,9 +30,9 @@ return {
 		},
 	},
 	renderer = {
-		root_folder_label = false,
 		highlight_git = false,
 		highlight_opened_files = "none",
+		group_empty = true,
 
 		indent_markers = {
 			enable = false,
