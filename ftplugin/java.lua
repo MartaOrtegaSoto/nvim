@@ -9,6 +9,8 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = workspace_path .. project_name
 
 local os_config = nil
+local mason_path = "/.local/share/nvim/mason"
+local eclipse_plugin = mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar"
 
 if vim.loop.os_uname().sysname == "Darwin" then
 	os_config = "mac"
@@ -16,6 +18,8 @@ elseif vim.loop.os_uname().sysname == "Linux" then
 	os_config = "linux"
 else
 	os_config = "win"
+	mason_path = "/AppData/Local/nvim-data/mason"
+	eclipse_plugin = mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.600.v20231106-1826.jar"
 end
 
 local config = {
@@ -27,17 +31,16 @@ local config = {
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
 		"-Xmx1g",
-		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+		"-javaagent:" .. home .. mason_path .. "/packages/jdtls/lombok.jar",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
 		"java.base/java.util=ALL-UNNAMED",
 		"--add-opens",
 		"java.base/java.lang=ALL-UNNAMED",
 		"-jar",
-		home
-			.. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar",
+		home .. eclipse_plugin,
 		"-configuration",
-		home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. os_config,
+		home .. mason_path .. "/packages/jdtls/config_" .. os_config,
 		"-data",
 		workspace_dir,
 	},
